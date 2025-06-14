@@ -18,7 +18,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer <your key>",
+						"value": "Bearer <your_token>",
 						"type": "text"
 					}
 				],
@@ -44,7 +44,34 @@
 			"name": "api/bolier/{id}",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/40",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"40"
+					]
+				}
 			},
 			"response": []
 		},
@@ -52,63 +79,374 @@
 			"name": "api/bolier/{bad-id}",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/170000",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"170000"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boilers - create",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/?name=Vaillant EcoTech Pro 28kW&manufacturer_part_number=V-ECO28-b&boiler_manufacturer_id=14&fuel_type_id=1&description=High efficiency gas combi boiler&sku=9981",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Vaillant EcoTech Pro 28kW"
+						},
+						{
+							"key": "manufacturer_part_number",
+							"value": "V-ECO28-b"
+						},
+						{
+							"key": "boiler_manufacturer_id",
+							"value": "14"
+						},
+						{
+							"key": "fuel_type_id",
+							"value": "1"
+						},
+						{
+							"key": "description",
+							"value": "High efficiency gas combi boiler"
+						},
+						{
+							"key": "sku",
+							"value": "9981"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boilers - create - bad request one",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/?manufacturer_part_number=V-ECO28",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						""
+					],
+					"query": [
+						{
+							"key": "manufacturer_part_number",
+							"value": "V-ECO28"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boilers - create - bad request two",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/?name=Invalid Boiler&manufacturer_part_number=X-404&boiler_manufacturer_id=99&fuel_type_id=99&",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Invalid Boiler"
+						},
+						{
+							"key": "manufacturer_part_number",
+							"value": "X-404"
+						},
+						{
+							"key": "boiler_manufacturer_id",
+							"value": "99"
+						},
+						{
+							"key": "fuel_type_id",
+							"value": "99"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boilers - update",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/638",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"638"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boilers - update - bad request",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/638?boiler_manufacturer_id=999",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"638"
+					],
+					"query": [
+						{
+							"key": "boiler_manufacturer_id",
+							"value": "999"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boliers - delete",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/638",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"638"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boliers - delete - bad request",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/99999",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"99999"
+					]
+				}
 			},
 			"response": []
 		},
@@ -116,15 +454,76 @@
 			"name": "/api/boilers/trashed",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					},
+					{
+						"key": "con",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/trashed",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"trashed"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "api/boilers/{id}/restore",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers/638/restore",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers",
+						"638",
+						"restore"
+					]
+				}
 			},
 			"response": []
 		},
@@ -132,7 +531,43 @@
 			"name": "api/boilers - filter test 1 - manufacturer",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_token>",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/boilers?fuel_type=gas&manufacturer=14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"boilers"
+					],
+					"query": [
+						{
+							"key": "fuel_type",
+							"value": "gas"
+						},
+						{
+							"key": "manufacturer",
+							"value": "14"
+						}
+					]
+				}
 			},
 			"response": []
 		}
