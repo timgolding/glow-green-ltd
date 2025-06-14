@@ -35,9 +35,6 @@ It demonstrates Laravel REST API development, database normalization, and secure
 **Endpoint:**  
 GET https://api.glowgreenltd.com/api/2025-test/boilers
 
-**Header Auth:**  
-`X-GG-API-Key: ***REMOVED***`
-
 ---
 
 ## Database Schema
