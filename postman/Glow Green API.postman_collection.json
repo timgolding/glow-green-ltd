@@ -18,7 +18,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer 1|p7KjWKX1mTHQdhOTVnLEHP99s62tuxll40w0vE6s3ec7115d",
+						"value": "Bearer <your key>",
 						"type": "text"
 					}
 				],
