@@ -1,6 +1,6 @@
 # 🔥💚 Glow Green Boiler API Project – Laravel Test 💚🔥
 
-## by Tim Golding
+## By Tim Golding
 
 This Laravel API application is a test project for Glow Green, designed to demonstrate working knowledge of Laravel backend principles, RESTful API design, and data normalization.
 
@@ -158,7 +158,7 @@ GET http://localhost/api/boilers
 ## Setup Instructions
 
 ```bash
-git clone https://github.com/your-username/glow-green-ltd.git
+git clone https://github.com/timgolding/glow-green-ltd.git
 cd glow-green-ltd
 composer install
 cp .env.example .env
