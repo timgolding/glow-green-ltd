@@ -22,8 +22,9 @@ It demonstrates Laravel REST API development, database normalization, and secure
 
 ## Technologies
 
-- Laravel 10
+- Laravel 10.x
 - MySQL
+- SQLite (for testing)
 - PHP 8+
 - Laravel Sanctum
 - Postman Collection
@@ -80,6 +81,8 @@ All tables use foreign keys to ensure referential integrity.
 | GET    | `/api/boilers/trashed`       | View soft-deleted boilers        |
 | POST   | `/api/boilers/{id}/restore`  | Restore a soft-deleted boiler    |
 
+All endpoints (except /ping) require Bearer Token auth via Sanctum.
+
 **Filter examples:**  
 `/api/boilers?manufacturer=Vaillant&fuel_type=Gas`
 
@@ -92,7 +95,7 @@ You can find the collection here:
 
 `/postman/glowgreen.postman_collection.json`
 
-> To use: Import into Postman → Set `Authorization` header (`Bearer {token}`) → Start testing!
+> To use: Import into Postman → Set `Authorization` header (`Bearer {token}`) → Start testing
 
 ---
 
@@ -102,7 +105,8 @@ You can find the collection here:
 - Example tests for:
   - API CRUD actions
   - Validation
-  - Soft deletion
+  - Soft deletion + restore
+  - Auth token generation
 
 ---
 
@@ -117,6 +121,11 @@ You can find the collection here:
 Currently not implemented.
 
 Consider adding model-level policies (Laravel `Gate` or `Policy`), or full role-based access control with `spatie/laravel-permission` for more complex user permission handling.
+
+### Postman Collection
+
+Postman collection: postman/postman_collection.json
+Import and test all endpoints including auth.
 
 ### 1 create user in tinker
 
@@ -150,6 +159,9 @@ Accept: application/json
 ```nginx
 GET http://localhost/api/boilers
 ```
+
+Add token to postman collection and test each route.
+
 ---
 
 ## Setup Instructions
@@ -172,3 +184,11 @@ php artisan test
 # Run only boiler-related tests
 php artisan test --filter=BoilerApiTest
 ```
+
+### Notes
+
+- .env file excluded for security.
+
+- Requires valid API key when calling external boiler feed.
+
+- Open to extension: pagination, rate limiting, Swagger docs, role-based access.

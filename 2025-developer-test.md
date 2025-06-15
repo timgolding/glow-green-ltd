@@ -28,13 +28,13 @@ An abstract class is used to define a set of methods that can be shared for rela
 **Pure PHP implementation**
 To store passwords securely:
 
- - Use password_hash() to hash passwords.
+- Use password_hash() to hash passwords.
 
- - Use password_verify() to validate credentials.
+- Use password_verify() to validate credentials.
 
- - Always use prepared statements to prevent SQL injection.
+- Always use prepared statements to prevent SQL injection.
 
- - Enforce HTTPS and consider adding 2FA for additional security.
+- Enforce HTTPS and consider adding 2FA for additional security.
 
 ```php
 // Storing password
