@@ -41,6 +41,27 @@ class BoilerApiTest extends TestCase
              ->assertJsonFragment(['name' => 'Test Boiler']);
     }
 
+    public function test_can_update_boiler()
+    {
+
+        $manufacturer = \App\Models\BoilerManufacturer::factory()->create();
+        $fuel = \App\Models\BoilerFuelType::factory()->create();
+
+        $boiler = Boiler::factory()->create([
+            'name' => 'Eco Boiler',
+            'boiler_manufacturer_id' => $manufacturer->id,
+            'fuel_type_id' => $fuel->id,
+        ]);
+
+
+        $response = $this->putJson("/api/boilers/{$boiler->id}", [
+           'name' => 'New Boiler Name',
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('boilers', ['name' => 'New Boiler Name']);
+    }
+
     public function test_validation_errors_on_post()
     {
         $this->withoutExceptionHandling();
@@ -55,6 +76,22 @@ class BoilerApiTest extends TestCase
                  'error',
                  'details' => ['name', 'manufacturer_part_number', 'boiler_manufacturer_id', 'fuel_type_id'],
              ]);
+    }
+
+    public function test_boiler_filtering()
+    {
+        $manufacturer = \App\Models\BoilerManufacturer::factory()->create();
+        $fuel = \App\Models\BoilerFuelType::factory()->create();
+
+        Boiler::factory()->create([
+            'name' => 'Eco Boiler',
+            'boiler_manufacturer_id' => $manufacturer->id,
+            'fuel_type_id' => $fuel->id,
+        ]);
+
+        $response = $this->getJson('/api/boilers?manufacturer='.$manufacturer->id.'&fuel_type='.$fuel->fuel_type_ref);
+        $response->assertStatus(200);
+        $response->assertJsonFragment(['name' => 'Eco Boiler']);
     }
 
     public function test_can_soft_delete_boiler()
@@ -75,5 +112,4 @@ class BoilerApiTest extends TestCase
         $response->assertStatus(200);
         $this->assertDatabaseHas('boilers', ['id' => $boiler->id, 'deleted_at' => null]);
     }
-
 }

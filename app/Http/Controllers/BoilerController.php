@@ -14,7 +14,7 @@ class BoilerController extends Controller
         // Filter by manufacturer name
         $query = Boiler::with(['manufacturer', 'fuelType']);
 
-        if ($request->has('manufacturer')) {
+        if ($request->filled('manufacturer')) {
             $query->whereHas('manufacturer', function ($q) use ($request) {
                 $q->where('boiler_manufacturer_id', $request->manufacturer)
                   ->orWhere('name', $request->manufacturer);
@@ -22,7 +22,7 @@ class BoilerController extends Controller
         }
 
         // Filter by fuel type name
-        if ($request->has('fuel_type')) {
+        if ($request->filled('fuel_type')) {
             $query->whereHas('fuelType', function ($q) use ($request) {
                 $q->where('name', $request->fuel_type)
                   ->orWhere('fuel_type_ref', $request->fuel_type);
